@@ -21,16 +21,7 @@ const MenuComponent = ({dishes,onClickDish}) => {
         <div className="container">
             <div className="row">
                     {menu}     
-            </div>
-           
-          
-           
-                
-            
-            
-            
-
-            
+            </div>   
         </div>
     )
 }
