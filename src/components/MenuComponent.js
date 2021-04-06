@@ -1,20 +1,13 @@
-import {useState} from 'react';
+
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
 
-const MenuComponent = ({dishes}) => {
 
-    const [selectedDish, setSelectedDish] = useState(null);
- 
+const MenuComponent = ({dishes,onClickDish}) => {
 
-
-
-
-
-   
        const menu = dishes.map((dish)=> (
         <div className="col-12 col-md-5 m-1" key={dish.id}>
-            <Card tag="li" onClick={() => setSelectedDish(dish)}>
+            <Card tag="li" onClick={() => onClickDish(dish.id)}>
                 <CardImg width="100%" src={dish.image} alt={dish.name} />
                 
                 <CardImgOverlay>
@@ -27,17 +20,15 @@ const MenuComponent = ({dishes}) => {
     return (
         <div className="container">
             <div className="row">
-                    {menu}   
+                    {menu}     
             </div>
-            <div className="row">
-                {selectedDish && (<Card>
-                <CardImg width="100%" src={selectedDish.image} alt={selectedDish.name} />
-                <CardBody>
-                <CardTitle>{selectedDish.name}</CardTitle>
-                <CardText>{selectedDish.description}</CardText>
-                </CardBody>
-                </Card>)}
-            </div>
+           
+          
+           
+                
+            
+            
+            
 
             
         </div>
