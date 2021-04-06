@@ -1,4 +1,4 @@
-
+import './App.css'; 
 
 import MainComponent from './components/MainComponent'
 
