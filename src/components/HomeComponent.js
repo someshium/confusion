@@ -19,7 +19,7 @@ return(
 
 const HomeComponent = (props) => {
     return (
-        <div ClassName="container">
+        <div className="container">
            <div className="row aligh-items-start">
                <div className="col-12 col-md m-1">
                    <RenderCard item={props.dish} />

@@ -1,9 +1,21 @@
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-const DishDetailComponent = ({selectedDish}) => {
-    const commentArray= selectedDish && (selectedDish.comments);
+const DishDetailComponent = ({selectedDish, comments}) => {
+    // console.log(selectedDish);
+    const commentArray= comments;
     return (
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/menu">Menu</Link> </BreadcrumbItem>
+                    <BreadcrumbItem active>{selectedDish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>{selectedDish.name}</h3>
+                    <hr/> 
+                </div>
+            </div>
         <div className="row">
         <div className="col-12 col-md-5 m-1">
                 {selectedDish && (<Card>

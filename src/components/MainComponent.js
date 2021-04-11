@@ -31,7 +31,18 @@ function MainComponent() {
 
         />
       )
-    } 
+    }
+    
+    const DishWithId = ({match}) => {
+      
+      const id= parseInt(match.params.id,10);
+     
+      
+      
+      return(
+          <DishDetailComponent selectedDish={DISHES.filter((dish) => dish.id === id)[0]} comments={comments.filter((comment) => comment.dishId === id)} />
+      )
+    }
   return (
     <div>
       <Header />
@@ -39,6 +50,7 @@ function MainComponent() {
         <Route path="/home" component ={HomePage} />
         <Route exact path="/contact" component ={Contact} />
         <Route exact path="/menu" component ={() => <MenuComponent dishes={DISHES} />} />
+        <Route path="/menu/:id" component = {DishWithId} />
         <Redirect to="/home" />
       </Switch>
       <FooterComponent />
