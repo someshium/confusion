@@ -1,8 +1,23 @@
-import React from 'react';
-import {Breadcrumb, BreadcrumbItem} from 'reactstrap'
+import React,{ useState } from 'react';
+import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col} from 'reactstrap'
 import {Link} from 'react-router-dom';
 
 function Contact(props) {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [telNum, setTelNum] = useState('');
+    const [email, setEmail] = useState('');
+    const [agree, setAgree] = useState(false);
+    const [contactType, setContactType] = useState('Tel.');
+    const [message, setMessage] = useState('');
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        alert(JSON.stringify([firstName,lastName,telNum,email,agree,contactType, message]));
+        
+
+    }
     return(
         <div className="container">
             <div className="row">
@@ -39,6 +54,66 @@ function Contact(props) {
                         <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
                         <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                     </div>
+                </div>
+            </div>
+            <div className="row row-content">
+                <div className="col-12">
+                    <h3>Send us your Feedback</h3>
+                </div>
+                <div className="col-12 col-md-9">
+                    <Form>
+                        <FormGroup row>
+                            <Label htmlFor="firstname" md={2}>First Name</Label>
+                            <Col md={10}>
+                                <Input type="text" id="firstname" name="firstname" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)}></Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="lastname" md={2}>Last Name</Label>
+                            <Col md={10}>
+                                <Input type="text" id="lastname" name="lastname" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)}></Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="telnum" md={2}>Contact Tel.</Label>
+                            <Col md={10}>
+                                <Input type="tel" id="telnum" name="telnum" placeholder="Tel. Number" value={telNum} onChange={e => setTelNum(e.target.value)}></Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="email" md={2}>E-Mail</Label>
+                            <Col md={10}>
+                                <Input type="email" id="email" name="email" placeholder="E-Mail" value={email} onChange={e => setEmail(e.target.value)}></Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col md={{size:6, offset:2}}>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="agree" checked={agree} onClick={e => setAgree(e.target.checked)}/> {' '} 
+                                        <strong>May we Contact You?</strong>
+                                    </Label>
+                                </FormGroup>
+                            </Col>
+                            <Col md={{size:3, offset:1}}>
+                                <Input type="select" name="contactType" value="contactType" onChange={e => setContactType(e.target.value)}>
+                                    <option value="tel">Tel.</option>
+                                    <option value="email">E-Mail</option>
+                                </Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label htmlFor="message" md={2}>Your Feedback</Label>
+                            <Col md={10}>
+                                <Input type="textarea" id="message" name="message" rows="12" onChange={e => setMessage(e.target.value)}></Input>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Col md={{size:10, offset:2}}>
+                                <Button type="submit" color="primary" onClick={handleSubmit}>Send Feedback</Button>
+                            </Col>
+                        </FormGroup>
+                    </Form>
                 </div>
             </div>
         </div>

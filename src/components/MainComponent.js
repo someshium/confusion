@@ -6,7 +6,7 @@ import {DISHES} from '../shared/dishes';
 import {COMMENTS} from '../shared/comments';
 import {LEADERS} from '../shared/leaders';
 import {PROMOTIONS} from '../shared/promotions';
-
+import About from './AboutComponent';
 import {useState} from 'react';
 import Header from './HeaderComponent';
 import FooterComponent from './FooterComponent';
@@ -50,6 +50,7 @@ function MainComponent() {
         <Route path="/home" component ={HomePage} />
         <Route exact path="/contact" component ={Contact} />
         <Route exact path="/menu" component ={() => <MenuComponent dishes={DISHES} />} />
+        <Route exact path="/aboutus" component ={About} />
         <Route path="/menu/:id" component = {DishWithId} />
         <Redirect to="/home" />
       </Switch>
